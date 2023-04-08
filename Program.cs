@@ -15,16 +15,20 @@
 
 
 Console.Clear();
+
+//input
 string[] userArray = { "Hello", "2", "world", ":-)" };
 
+//logic
 string[] newArray = GetArrayStringLengthLE3(userArray);
 
-Console.WriteLine($"[{String.Join(", ", userArray)}] -> [{String.Join(", ", newArray)}]");
+//output
+Console.WriteLine($"{ArrayToString(userArray)} -> {ArrayToString(newArray)}");
 
 
 // Функция копирования n элементов arr в новый массив
 // Для отрицательных n вернем пустой массив
-string[] CopyArray(string[] arr, int n)
+static string[] CopyArray(string[] arr, int n)
 {
     if (n < 0) n = 0;
     if (n >= arr.Length) return arr;
@@ -42,7 +46,7 @@ string[] CopyArray(string[] arr, int n)
 
 // Функция возвращает новый массив из строк 
 // длина которых меньше, либо равна 3 символам
-string[] GetArrayStringLengthLE3(string[] arr)
+static string[] GetArrayStringLengthLE3(string[] arr)
 {
     int length = arr.Length;
     string[] result = new string[length];
@@ -54,4 +58,10 @@ string[] GetArrayStringLengthLE3(string[] arr)
             count++;
         }
     return CopyArray(result, count);
+}
+
+
+// функция представляет массив строк в виде одной строки
+static string ArrayToString(string[] arr) {
+    return $"[\"{String.Join("\", \"", arr)}\"]";
 }
