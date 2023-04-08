@@ -26,24 +26,6 @@ string[] newArray = GetArrayStringLengthLE3(userArray);
 Console.WriteLine($"\n{ArrayToString(userArray)} -> {ArrayToString(newArray)}");
 
 
-// Функция копирования n элементов arr в новый массив
-// Для отрицательных n вернем пустой массив
-static string[] CopyArray(string[] arr, int n)
-{
-    if (n < 0) n = 0;
-    if (n >= arr.Length) return arr;
-    else
-    {
-        string[] result = new string[n];
-        for (int i = 0; i < n; i++)
-        {
-            result[i] = arr[i];
-        }
-        return result;
-    }
-}
-
-
 // Функция возвращает новый массив из строк 
 // длина которых меньше, либо равна 3 символам
 static string[] GetArrayStringLengthLE3(string[] arr)
@@ -57,7 +39,8 @@ static string[] GetArrayStringLengthLE3(string[] arr)
             result[count] = arr[i];
             count++;
         }
-    return CopyArray(result, count);
+    Array.Resize(ref result, count);
+    return result;
 }
 
 
@@ -89,7 +72,7 @@ static int InputNaturalNumber(string msg, int defaultValue)
 // Функция ввода массива строк
 static string[] InputArray()
 {
-    //Веведем варианты готовых массивов
+    //Выведем варианты готовых массивов
     Console.WriteLine("1. [\"Hello\", \"2\", \"world\", \":-)\"]");
     Console.WriteLine("2. [\"1234\", \"1567\", \"-2\", \"computer science\"]");
     Console.WriteLine("3. [\"Russia\", \"Denmark\", \"Kazan\"]");
@@ -102,8 +85,8 @@ static string[] InputArray()
 
     if (userChoice == 1) return new[] { "Hello", "2", "world", ":-)" };
     if (userChoice == 2) return new[] { "1234", "1567", "-2", "computer science" };
-    if (userChoice == 3) return new[] { "Russia", "Denmark", "Kazan"};
-    if (userChoice == 4) return new[] { "RUB", "EUR", "USD"};
+    if (userChoice == 3) return new[] { "Russia", "Denmark", "Kazan" };
+    if (userChoice == 4) return new[] { "RUB", "EUR", "USD" };
     if (userChoice == 5) return new[] { "Bye" };
     if (userChoice == 6) return new string[0];
 
