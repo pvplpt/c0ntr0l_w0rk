@@ -23,9 +23,11 @@ Console.WriteLine($"[{String.Join(", ", userArray)}] -> [{String.Join(", ", newA
 
 
 // Функция копирования n элементов arr в новый массив
+// Для отрицательных n вернем пустой массив
 string[] CopyArray(string[] arr, int n)
 {
-    if (n == arr.Length) return arr;
+    if (n < 0) n = 0;
+    if (n >= arr.Length) return arr;
     else
     {
         string[] result = new string[n];
