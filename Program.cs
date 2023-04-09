@@ -20,10 +20,10 @@ Console.Clear();
 string[] userArray = InputArray();
 
 //logic
-string[] newArray = GetArrayStringLengthLE3(userArray);
+string[] resultArray = GetArrayStringLengthLE3(userArray);
 
 //output
-Console.WriteLine($"\n{ArrayToString(userArray)} -> {ArrayToString(newArray)}");
+Console.WriteLine($"\n{ArrayToString(userArray)} -> {ArrayToString(resultArray)}");
 
 
 // Функция возвращает новый массив из строк 
@@ -90,9 +90,9 @@ static string[] InputArray()
     if (userChoice == 5) return new[] { "Bye" };
     if (userChoice == 6) return new string[0];
 
-    int size = InputNaturalNumber("Введите длину массива (по умолчанию 3): ", 3);
-    string[] result = new string[size];
-    for (int i = 0; i < size; i++)
+    int N = InputNaturalNumber("Введите длину массива (по умолчанию 3): ", 3);
+    string[] result = new string[N];
+    for (int i = 0; i < N; i++)
     {
         Console.Write($"Введите {i + 1} элемент массива: ");
         result[i] = Console.ReadLine() ?? "";
